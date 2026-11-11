@@ -1,0 +1,17 @@
+[project]
+name = "phasefield-dendrite"
+version = "0.1.0"
+description = "Quantitative phase-field solver for dendritic solidification of a dilute binary alloy, 2D"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2.0", "torch>=2.6", "matplotlib>=3.8"]
+
+# CUDA build of torch on Windows and Linux; macOS takes the default PyPI wheel
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu124", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
